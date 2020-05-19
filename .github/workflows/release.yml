@@ -1,0 +1,20 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release-on-push:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - id: release
+        uses: rymndhng/release-on-push-action@v0.14.0
+        with:
+          bump_version_scheme: patch
+      - name: Check tag Output
+        run: echo "Got tag version ${{ steps.release.outputs.tag_name }}"
+      - name: Check version Output
+        run: echo "Got version ${{ steps.release.outputs.name }}"
