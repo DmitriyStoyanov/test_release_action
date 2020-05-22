@@ -15,6 +15,6 @@ jobs:
         with:
           bump_version_scheme: patch
       - name: Check tag Output
-        run: echo "Got tag version ${{ steps.release.outputs.tag_name }}"
-      - name: Check version Output
-        run: echo "Got version ${{ steps.release.outputs.name }}"
+        run: |
+          echo "Got tag version ${{ steps.release.outputs.tag_name }}"
+          echo "Got release version ${{ steps.release.outputs.version }}"
